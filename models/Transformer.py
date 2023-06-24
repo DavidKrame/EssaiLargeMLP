@@ -22,7 +22,7 @@ class Model(nn.Module):
     def __init__(self, args):
         super(Model, self).__init__()
 
-        self.model = nn.Sequential(nn.Linear(1, 1000), nn.GELU(), nn.Linear(1000, 1))
+        self.model = nn.Sequential(nn.Linear(96, 1000), nn.GELU(), nn.Linear(1000, 96))
 
     def forward(
         self,
