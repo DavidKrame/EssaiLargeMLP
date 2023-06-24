@@ -1,0 +1,7 @@
+*.pyc
+*.pth
+result.txt
+test_results/
+results/
+logs/
+.DS_Store
