@@ -93,6 +93,7 @@ class Dataset_ETT_hour(Dataset):
             df_data = df_raw[cols_data]
         elif self.features == "S":
             df_data = df_raw[[self.target]]
+            print(f"D_F_DATA_type {df_data.shape} AND TYPE : {type(df_data)}")
 
         if self.scale:
             train_data = df_data[border1s[0] : border2s[0]]
@@ -100,6 +101,7 @@ class Dataset_ETT_hour(Dataset):
             data = self.scaler.transform(df_data.values)
         else:
             data = df_data.values
+        print(f"DATA_type {data.shape} AND TYPE : {type(data)}")
 
         df_stamp = df_raw[["date"]][border1:border2]
         df_stamp["date"] = pd.to_datetime(df_stamp.date)
@@ -127,6 +129,8 @@ class Dataset_ETT_hour(Dataset):
         r_end = r_begin + self.label_len + self.pred_len
 
         seq_x = self.data_x[s_begin:s_end]
+        my_zero = np.zeros(((self.pred_len - 96), 1))
+        seq_x = np.append(seq_x, my_zero, axis=0)
         seq_y = self.data_y[r_begin:r_end]
         seq_x_mark = self.data_stamp[s_begin:s_end]
         seq_y_mark = self.data_stamp[r_begin:r_end]
@@ -245,6 +249,8 @@ class Dataset_ETT_minute(Dataset):
         r_end = r_begin + self.label_len + self.pred_len
 
         seq_x = self.data_x[s_begin:s_end]
+        my_zero = np.zeros(((self.pred_len - 96), 1))
+        seq_x = np.append(seq_x, my_zero, axis=0)
         seq_y = self.data_y[r_begin:r_end]
         seq_x_mark = self.data_stamp[s_begin:s_end]
         seq_y_mark = self.data_stamp[r_begin:r_end]
@@ -437,6 +443,8 @@ class Dataset_Custom(Dataset):
         r_end = r_begin + self.label_len + self.pred_len
 
         seq_x = self.data_x[s_begin:s_end]
+        my_zero = np.zeros(((self.pred_len - 96), 1))
+        seq_x = np.append(seq_x, my_zero, axis=0)
         seq_y = self.data_y[r_begin:r_end]
         seq_x_mark = self.data_stamp[s_begin:s_end]
         seq_y_mark = self.data_stamp[r_begin:r_end]
@@ -692,6 +700,8 @@ class Dataset_Custom_2(Dataset):
         r_end = r_begin + self.label_len + self.pred_len
 
         seq_x = self.data_x[s_begin:s_end]
+        my_zero = np.zeros(((self.pred_len - 96), 1))
+        seq_x = np.append(seq_x, my_zero, axis=0)
         seq_y = self.data_y[r_begin:r_end]
         seq_x_mark = self.data_stamp[s_begin:s_end]
         seq_y_mark = self.data_stamp[r_begin:r_end]
