@@ -2,11 +2,11 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-if [ ! -d "./logs/V_Transformer" ]; then
-    mkdir ./logs/V_Transformer
+if [ ! -d "./logs/MLP" ]; then
+    mkdir ./logs/MLP
 fi
 
-model_name=Transformer
+model_name=MLP
 seq_len=96
 
 for pred_len in 96 192 384 768
@@ -32,6 +32,6 @@ do
       --c_out 1 \
       --des 'Exp' \
       --itr 1 \
-      --train_epochs 3 >logs/V_Transformer/$model_name'_Continue_electricity_on_OTH'_$seq_len'_'$pred_len.log
+      --train_epochs 3 >logs/MLP/$model_name'_Continue_electricity_on_OTH'_$seq_len'_'$pred_len.log
 
 done

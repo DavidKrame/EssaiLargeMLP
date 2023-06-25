@@ -93,7 +93,6 @@ class Dataset_ETT_hour(Dataset):
             df_data = df_raw[cols_data]
         elif self.features == "S":
             df_data = df_raw[[self.target]]
-            print(f"D_F_DATA_type {df_data.shape} AND TYPE : {type(df_data)}")
 
         if self.scale:
             train_data = df_data[border1s[0] : border2s[0]]
@@ -101,7 +100,6 @@ class Dataset_ETT_hour(Dataset):
             data = self.scaler.transform(df_data.values)
         else:
             data = df_data.values
-        print(f"DATA_type {data.shape} AND TYPE : {type(data)}")
 
         df_stamp = df_raw[["date"]][border1:border2]
         df_stamp["date"] = pd.to_datetime(df_stamp.date)

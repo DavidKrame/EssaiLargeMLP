@@ -10,7 +10,7 @@ random.seed(fix_seed)
 torch.manual_seed(fix_seed)
 np.random.seed(fix_seed)
 
-parser = argparse.ArgumentParser(description="Transformer for Time Series Forecasting")
+parser = argparse.ArgumentParser(description="MLP and LSTM for Time Series Forecasting")
 
 # basic config
 parser.add_argument("--is_training", type=int, required=True, default=1, help="status")
@@ -28,8 +28,8 @@ parser.add_argument(
     "--model",
     type=str,
     required=True,
-    default="Autoformer",
-    help="model name, options: [Autoformer, Informer, Transformer]",
+    default="MLP",
+    help="model name, options: [LSTM, MLP]",
 )
 
 # data loader

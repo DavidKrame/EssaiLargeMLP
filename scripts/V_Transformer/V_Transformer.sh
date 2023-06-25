@@ -2,11 +2,11 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-if [ ! -d "./logs/V_Transformer" ]; then
-    mkdir ./logs/V_Transformer
+if [ ! -d "./logs/MLP" ]; then
+    mkdir ./logs/MLP
 fi
 
-model_name=Transformer
+model_name=MLP
 seq_len=96
 
 for pred_len in 96 192 384 768
@@ -32,7 +32,7 @@ do
       --c_out 7 \
       --des 'Exp' \
       --itr 1  \
-      --train_epochs 10 >logs/V_Transformer/$model_name'_Etth1'_$seq_len'_'$pred_len.log
+      --train_epochs 10 >logs/MLP/$model_name'_Etth1'_$seq_len'_'$pred_len.log
 
     python -u run_longExp.py \
       --is_training 1 \
@@ -54,7 +54,7 @@ do
       --c_out 7 \
       --des 'Exp' \
       --itr 1  \
-      --train_epochs 10 >logs/V_Transformer/$model_name'_Etth2'_$seq_len'_'$pred_len.log
+      --train_epochs 10 >logs/MLP/$model_name'_Etth2'_$seq_len'_'$pred_len.log
       
     python -u run_longExp.py \
       --is_training 1 \
@@ -76,7 +76,7 @@ do
       --c_out 321 \
       --des 'Exp' \
       --itr 1 \
-      --train_epochs 10 >logs/V_Transformer/$model_name'_electricity'_$seq_len'_'$pred_len.log
+      --train_epochs 10 >logs/MLP/$model_name'_electricity'_$seq_len'_'$pred_len.log
 
     python -u run_longExp.py \
       --is_training 1 \
@@ -98,7 +98,7 @@ do
       --c_out 321 \
       --des 'Exp' \
       --itr 1 \
-      --train_epochs 10 >logs/V_Transformer/$model_name'_electricity_OTH'_$seq_len'_'$pred_len.log
+      --train_epochs 10 >logs/MLP/$model_name'_electricity_OTH'_$seq_len'_'$pred_len.log
 
 
     python -u run_longExp.py \
@@ -121,7 +121,7 @@ do
       --c_out 321 \
       --des 'Exp' \
       --itr 1 \
-      --train_epochs 10 >logs/V_Transformer/$model_name'_custom_elec_01'_$seq_len'_'$pred_len.log
+      --train_epochs 10 >logs/MLP/$model_name'_custom_elec_01'_$seq_len'_'$pred_len.log
 
     python -u run_longExp.py \
       --is_training 1 \
@@ -143,7 +143,7 @@ do
       --c_out 321 \
       --des 'Exp' \
       --itr 1 \
-      --train_epochs 10 >logs/V_Transformer/$model_name'_custom_elec_04'_$seq_len'_'$pred_len.log
+      --train_epochs 10 >logs/MLP/$model_name'_custom_elec_04'_$seq_len'_'$pred_len.log
 
 
 done
